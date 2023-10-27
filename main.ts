@@ -93,13 +93,52 @@ const db = mysql.createPool({
   database: 'sample',
 });
 
+const addresses = [
+  {
+    addrNo: 1,
+    addrLine1: '123 Main St',
+    addrLine2: 'Apt 4B',
+    city: 'New York',
+    postcode: '10001',
+    country: 'USA',
+  },
+  // Add more addresses if needed
+];
 
+const customers = [
+  {
+    custID: 1,
+    firstName: 'John',
+    lastName: 'Doe',
+    gender: 'Male',
+    email: 'john.doe@example.com',
+    landLine: '123-456-7890',
+    mobile: '987-654-3210',
+    address: addresses[0],
+  },
+  // Add more customers if needed
+];
 
+const products = [
+  {
+    pId: 1,
+    description: 'Product 1',
+    unitPrice: 9.99,
+    availableQty: 100,
+  },
+  // Add more products if needed
+];
 
-
-
-
-
+const customerOrders = [
+  {
+    ordID: 1,
+    dateOrdered: '2023-10-26',
+    orderedQty: 5,
+    customer: customers[0],
+    product: products[0],
+  },
+  // Add more customer orders if needed
+];
 
 // Resolvers define the technique for fetching the types defined in the
 // schema. This resolver retrieves books from the "books" array above.
@@ -345,7 +384,7 @@ const resolvers = {
         const newProduct = { ...product, pId };
     
         // Add the new product to your in-memory array (if needed)
-        //products.push(newProduct);
+        products.push(newProduct);
     
         return newProduct;
       } catch (error) {
